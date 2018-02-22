@@ -1,4 +1,5 @@
 import React from "react";
+import Titles from './components/Titles';
 
 class App extends React.Component{
   render(){
@@ -6,6 +7,7 @@ class App extends React.Component{
       <div>
         <p>Hey</p> 
         <h1> Hello! </h1>
+        <Titles/>
       </div>
     );
   }
