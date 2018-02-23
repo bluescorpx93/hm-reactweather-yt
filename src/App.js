@@ -6,16 +6,16 @@ import Weather from './components/Weather';
 const API_KEY = "def96d2721e4de07220724e98674cc45";
 
 class App extends React.Component{
-
+  state = {
+    tempareture: undefined,
+    city: undefined,
+    country: undefined,
+    humidity: undefined,
+    description: undefined,
+    error: undefined
+  }
   getWeather = async (e) => {
-    state = {
-      tempareture: undefined,
-      city: undefined,
-      country: undefined,
-      humidity: undefined,
-      description: undefined,
-      error: undefined
-    }
+    
     e.preventDefault();
     
     const city = e.target.elements.city.value;
@@ -38,11 +38,11 @@ class App extends React.Component{
   render(){
     return(
       <div>
-        <Titles/>
-        <Form getWeatherFunc={this.getWeather} />
-        <Weather temperature={this.state.temperature} city={this.state.city} country={this.state.country} humidity={this.state.humidity} description={this.state.description} error={this.state.error} />
+      <Titles/>
+      <Form getWeatherFunc={this.getWeather} />
+      <Weather temperature={this.state.temperature} city={this.state.city} country={this.state.country} humidity={this.state.humidity} description={this.state.description} error={this.state.error} />
       </div>
-    );
+      );
   }
 }
 
