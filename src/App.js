@@ -2,6 +2,7 @@ import React from "react";
 import Titles from './components/Titles';
 import Form from './components/Form';
 import Weather from './components/Weather';
+import WeatherStateless from './components/WeatherStateless';
 
 const API_KEY = "def96d2721e4de07220724e98674cc45";
 
@@ -48,8 +49,12 @@ class App extends React.Component{
     return(
       <div>
       <Titles/>
+      <h3> Form </h3>
       <Form getWeatherFunc={this.getWeather} />
+      <h3> Weather </h3>
       <Weather temperature={this.state.temperature} city={this.state.city} country={this.state.country} humidity={this.state.humidity} description={this.state.description} error={this.state.error} />
+      <h3> Weather Stateless </h3>
+      <WeatherStateless temperature={this.state.temperature} city={this.state.city} country={this.state.country} humidity={this.state.humidity} description={this.state.description} error={this.state.error}/>
       </div>
       );
   }
