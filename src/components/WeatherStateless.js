@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WeatherStateless = (props) => (
+const WeatherStateless = props => (
 	<div>
 		{ props.city && props.country && <p> <strong>Location:</strong> {props.city}, {props.country} </p> } 
 
