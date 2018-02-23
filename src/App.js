@@ -1,6 +1,8 @@
 import React from "react";
 import Titles from './components/Titles';
+import TitlesStateless from './components/TitlesStateless';
 import Form from './components/Form';
+import FormStateless from './components/FormStateless';
 import Weather from './components/Weather';
 import WeatherStateless from './components/WeatherStateless';
 
@@ -48,15 +50,24 @@ class App extends React.Component{
   render(){
     return(
       <div>
-      <Titles/>
-      <h3> Form </h3>
-      <Form getWeatherFunc={this.getWeather} />
-      <h3> Weather </h3>
-      <Weather temperature={this.state.temperature} city={this.state.city} country={this.state.country} humidity={this.state.humidity} description={this.state.description} error={this.state.error} />
-      <h3> Weather Stateless </h3>
-      <WeatherStateless temperature={this.state.temperature} city={this.state.city} country={this.state.country} humidity={this.state.humidity} description={this.state.description} error={this.state.error}/>
+        <div class='text-center'> <Titles/> <TitlesStateless /> </div>
+        <div class='col-md-6'>
+          <h2> State Component </h2>
+          <h4> Form </h4>
+          <Form getWeatherFunc={this.getWeather} />
+          <h4> Weather </h4>
+          <Weather temperature={this.state.temperature} city={this.state.city} country={this.state.country} humidity={this.state.humidity} description={this.state.description} error={this.state.error} />
+        </div>
+        <div class='col-md-6'>
+          <h2> Stateless Component </h2>
+          <h4> Form Stateless</h4>
+          <FormStateless getWeatherFunc={this.getWeather} />
+          <h4> Weather Stateless</h4>
+
+          <WeatherStateless temperature={this.state.temperature} city={this.state.city} country={this.state.country} humidity={this.state.humidity} description={this.state.description} error={this.state.error}/>
+        </div>
       </div>
-      );
+    );
   }
 }
 
