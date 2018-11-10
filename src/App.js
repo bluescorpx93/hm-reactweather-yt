@@ -5,8 +5,7 @@ import Form from './components/Form';
 import FormStateless from './components/FormStateless';
 import Weather from './components/Weather';
 import WeatherStateless from './components/WeatherStateless';
-
-const API_KEY = "def96d2721e4de07220724e98674cc45";
+import API_KEY from './API_KEY';
 
 class App extends React.Component{
   state = {
@@ -17,8 +16,8 @@ class App extends React.Component{
     description: undefined,
     error: undefined
   }
-  getWeather = async (e) => {
 
+  getWeather = async (e) => {
     e.preventDefault();
     
     const city = e.target.elements.city.value;
@@ -27,38 +26,39 @@ class App extends React.Component{
 
     if (city && country){
       const data = await api_call.json();
-      console.log(data);
-      this.setState({
-        temperature: data.main.temp,
-        city: data.name,
-        country: data.sys.country,
-        humidity: data.main.humidity,
-        description: data.weather[0].description,
-        error: ""
-      });
+      if (data.cod === 200){
+        this.setState({
+          temperature: data.main.temp,
+          city: data.name,
+          country: data.sys.country,
+          humidity: data.main.humidity,
+          description: data.weather[0].description,
+          error: data.message
+        });
+      } else {
+        this.setState({
+          error: data.message
+        });
+      }
     } else {
       this.setState({
-        tempareture: undefined,
-        city: undefined,
-        country: undefined,
-        humidity: undefined,
-        description: undefined,
         error: "Please enter values correctly"
       })
     }
   }
+
   render(){
     return(
-      <div>
-        <div class='text-center'> <Titles/> <TitlesStateless /> </div>
-        <div class='col-md-6'>
+      <div className='container-fluid'>
+        <div className='text-center'> <Titles/> <TitlesStateless /> </div>
+        <div className='col-md-6'>
           <h2> State Component </h2>
           <h4> Form </h4>
           <Form getWeatherFunc={this.getWeather} />
           <h4> Weather </h4>
           <Weather temperature={this.state.temperature} city={this.state.city} country={this.state.country} humidity={this.state.humidity} description={this.state.description} error={this.state.error} />
         </div>
-        <div class='col-md-6'>
+        <div className='col-md-6'>
           <h2> Stateless Component </h2>
           <h4> Form Stateless</h4>
           <FormStateless getWeatherFunc={this.getWeather} />
