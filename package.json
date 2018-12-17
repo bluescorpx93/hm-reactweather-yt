@@ -2,6 +2,9 @@
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
+  "author": "Toufiq (https://twitter.com/burningraven06)",
+  "description" : "React with OpenWeatherMap API ",
+  "keywords" : ["react","openweathermap","js","javascript","reactjs","react-cli","api","react-components"],
   "dependencies": {
     "express": "^4.16.4",
     "react": "^16.2.0",
